@@ -23,7 +23,7 @@ from urllib.parse import urlsplit
 _DIGEST = re.compile(r"^[a-z0-9_+.-]+:[A-Za-z0-9=_-]+$")
 _NAME_COMPONENT = re.compile(r"^[a-z0-9]+(?:[._-][a-z0-9]+)*$")
 _PROJECT = re.compile(r"^[a-z0-9]+(?:[._-][a-z0-9]+)*$")
-_PROGRESS_PREFIX_ENV = "_ARTIFACT_MIRROR_PROGRESS_PREFIX"
+_PROGRESS_PREFIX_ENV = "_DEPENDENCY_GATEWAY_MIRROR_PROGRESS_PREFIX"
 _ACTIVE_PROCESSES: set[subprocess.Popen] = set()
 _ACTIVE_PROCESSES_LOCK = threading.Lock()
 _OUTPUT_LOCK = threading.Lock()

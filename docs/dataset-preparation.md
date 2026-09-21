@@ -26,17 +26,17 @@ Registry credentials live only in the Git-ignored `config.local.env` or an exist
 YICLOUD_HARBOR_HOST=<registry-host>
 YICLOUD_HARBOR_USERNAME=<registry-user>
 YICLOUD_HARBOR_PASSWORD=<registry-password>
-ARTIFACT_MIRROR_PROJECT=public-mirror
-ARTIFACT_MIRROR_PLATFORM=linux/amd64
-ARTIFACT_MIRROR_CONCURRENCY=4
+DEPENDENCY_GATEWAY_MIRROR_PROJECT=public-mirror
+DEPENDENCY_GATEWAY_MIRROR_PLATFORM=linux/amd64
+DEPENDENCY_GATEWAY_MIRROR_CONCURRENCY=4
 ```
 
 Optional variables:
 
-- `ARTIFACT_MIRROR_SOURCE_PREFIX_MAP_JSON`: configures the ordered mapping from upstreams to an accessible mirror;
-- `ARTIFACT_MIRROR_UPSTREAM_PROXY`: an explicit upstream proxy;
-- `ARTIFACT_MIRROR_DIRECT_UPSTREAM_WITH_PROXY`: whether, after a domestic mirror fails, to try the official source through the proxy;
-- `ARTIFACT_CACHE_GATEWAY_URL`: the `/v1/cache` root used for warming packages and direct downloads.
+- `DEPENDENCY_GATEWAY_MIRROR_SOURCE_PREFIX_MAP_JSON`: configures the ordered mapping from upstreams to an accessible mirror;
+- `DEPENDENCY_GATEWAY_MIRROR_UPSTREAM_PROXY`: an explicit upstream proxy;
+- `DEPENDENCY_GATEWAY_MIRROR_DIRECT_UPSTREAM_WITH_PROXY`: whether, after a domestic mirror fails, to try the official source through the proxy;
+- `DEPENDENCY_GATEWAY_URL`: the `/v1/cache` root used for warming packages and direct downloads.
 
 The tool does not implicitly inherit an ambient proxy. Whether each actual downloading component uses a proxy is decided by command arguments and the generated execution environment.
 

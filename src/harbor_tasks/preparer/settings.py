@@ -50,50 +50,50 @@ def load_settings(args: argparse.Namespace) -> dict[str, object]:
     load_local_env(env_file)
 
     registry = getattr(args, "registry", None) or os.environ.get(
-        "ARTIFACT_MIRROR_REGISTRY"
+        "DEPENDENCY_GATEWAY_MIRROR_REGISTRY"
     ) or os.environ.get("YICLOUD_HARBOR_HOST")
     if not registry:
         raise MirrorError(
-            "target Registry is required via --registry, ARTIFACT_MIRROR_REGISTRY, "
+            "target Registry is required via --registry, DEPENDENCY_GATEWAY_MIRROR_REGISTRY, "
             "or YICLOUD_HARBOR_HOST"
         )
     project = getattr(args, "project", None) or os.environ.get(
-        "ARTIFACT_MIRROR_PROJECT", "public-mirror"
+        "DEPENDENCY_GATEWAY_MIRROR_PROJECT", "public-mirror"
     )
     platform = getattr(args, "platform", None) or os.environ.get(
-        "ARTIFACT_MIRROR_PLATFORM", "linux/amd64"
+        "DEPENDENCY_GATEWAY_MIRROR_PLATFORM", "linux/amd64"
     )
     source_map_raw = getattr(args, "source_prefix_map_json", None) or os.environ.get(
-        "ARTIFACT_MIRROR_SOURCE_PREFIX_MAP_JSON",
+        "DEPENDENCY_GATEWAY_MIRROR_SOURCE_PREFIX_MAP_JSON",
         _DEFAULT_SOURCE_PREFIX_MAP_JSON,
     )
     target_tls_verify = getattr(args, "target_tls_verify", None)
     if target_tls_verify is None:
         target_tls_verify = _boolean_setting(
-            "ARTIFACT_MIRROR_TARGET_TLS_VERIFY", True
+            "DEPENDENCY_GATEWAY_MIRROR_TARGET_TLS_VERIFY", True
         )
     upstream_proxy = getattr(args, "upstream_proxy", None) or os.environ.get(
-        "ARTIFACT_MIRROR_UPSTREAM_PROXY"
+        "DEPENDENCY_GATEWAY_MIRROR_UPSTREAM_PROXY"
     )
     direct_upstream_with_proxy = getattr(
         args, "direct_upstream_with_proxy", None
     )
     if direct_upstream_with_proxy is None:
         direct_upstream_with_proxy = _boolean_setting(
-            "ARTIFACT_MIRROR_DIRECT_UPSTREAM_WITH_PROXY", False
+            "DEPENDENCY_GATEWAY_MIRROR_DIRECT_UPSTREAM_WITH_PROXY", False
         )
     if direct_upstream_with_proxy and not upstream_proxy:
         raise MirrorError(
             "direct upstream fallback requires --upstream-proxy or "
-            "ARTIFACT_MIRROR_UPSTREAM_PROXY"
+            "DEPENDENCY_GATEWAY_MIRROR_UPSTREAM_PROXY"
         )
     concurrency_raw = getattr(args, "concurrency", None)
     if concurrency_raw is None:
-        concurrency_raw = os.environ.get("ARTIFACT_MIRROR_CONCURRENCY", "4")
+        concurrency_raw = os.environ.get("DEPENDENCY_GATEWAY_MIRROR_CONCURRENCY", "4")
     try:
         concurrency = int(concurrency_raw)
     except (TypeError, ValueError) as exc:
-        raise MirrorError("ARTIFACT_MIRROR_CONCURRENCY must be an integer") from exc
+        raise MirrorError("DEPENDENCY_GATEWAY_MIRROR_CONCURRENCY must be an integer") from exc
     if concurrency < 1 or concurrency > 32:
         raise MirrorError("image mirror concurrency must be between 1 and 32")
     return {

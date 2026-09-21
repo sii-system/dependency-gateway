@@ -2141,8 +2141,8 @@ class DatasetPreparationTest(unittest.TestCase):
             output = root / "output"
             env_file = root / "config.local.env"
             env_file.write_text(
-                'ARTIFACT_MIRROR_REGISTRY="harbor.example.internal"\n'
-                'ARTIFACT_MIRROR_PROJECT="public-mirror"\n',
+                'DEPENDENCY_GATEWAY_MIRROR_REGISTRY="harbor.example.internal"\n'
+                'DEPENDENCY_GATEWAY_MIRROR_PROJECT="public-mirror"\n',
                 encoding="utf-8",
             )
             exit_code = prepare_main(
@@ -2178,11 +2178,11 @@ class DatasetPreparationTest(unittest.TestCase):
                 'YICLOUD_HARBOR_HOST="harbor.example.internal"\n'
                 'YICLOUD_HARBOR_USERNAME="robot"\n'
                 'YICLOUD_HARBOR_PASSWORD="secret"\n'
-                'ARTIFACT_MIRROR_PROJECT="public-mirror"\n'
-                'ARTIFACT_MIRROR_SOURCE_PREFIX_MAP_JSON='
+                'DEPENDENCY_GATEWAY_MIRROR_PROJECT="public-mirror"\n'
+                'DEPENDENCY_GATEWAY_MIRROR_SOURCE_PREFIX_MAP_JSON='
                 "'{\"docker.io\":\"m.daocloud.io/docker.io\"}'\n"
-                'ARTIFACT_MIRROR_UPSTREAM_PROXY="http://proxy.example:7890"\n'
-                'ARTIFACT_MIRROR_DIRECT_UPSTREAM_WITH_PROXY="true"\n',
+                'DEPENDENCY_GATEWAY_MIRROR_UPSTREAM_PROXY="http://proxy.example:7890"\n'
+                'DEPENDENCY_GATEWAY_MIRROR_DIRECT_UPSTREAM_WITH_PROXY="true"\n',
                 encoding="utf-8",
             )
 

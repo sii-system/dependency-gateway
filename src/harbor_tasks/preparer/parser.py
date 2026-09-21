@@ -160,7 +160,7 @@ def parser() -> argparse.ArgumentParser:
     warm_download_parser.add_argument(
         "--gateway-url",
         default=os.environ.get(
-            "ARTIFACT_CACHE_GATEWAY_URL", "http://127.0.0.1:8080/v1/cache"
+            "DEPENDENCY_GATEWAY_URL", "http://127.0.0.1:8080/v1/cache"
         ),
     )
     warm_download_parser.add_argument("--timeout", type=float, default=600.0)
@@ -252,7 +252,7 @@ def parser() -> argparse.ArgumentParser:
     prepare_parser.add_argument(
         "--gateway-url",
         default=os.environ.get(
-            "ARTIFACT_CACHE_GATEWAY_URL", "http://127.0.0.1:8080/v1/cache"
+            "DEPENDENCY_GATEWAY_URL", "http://127.0.0.1:8080/v1/cache"
         ),
         help="reachable Dependency Gateway /v1/cache root",
     )
@@ -272,7 +272,7 @@ def parser() -> argparse.ArgumentParser:
     warm_parser.add_argument(
         "--gateway-url",
         default=os.environ.get(
-            "ARTIFACT_CACHE_GATEWAY_URL", "http://127.0.0.1:8080/v1/cache"
+            "DEPENDENCY_GATEWAY_URL", "http://127.0.0.1:8080/v1/cache"
         ),
     )
     warm_parser.add_argument("--timeout", type=float, default=600.0)
