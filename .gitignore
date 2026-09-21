@@ -1,0 +1,23 @@
+.env
+.env.*
+!.env.example
+config.local.env
+
+# Local runtime state; production data must not be committed to the source repository.
+cache/
+data/
+state/
+tmp/
+*.log
+
+# Temporary files produced by editors and language tooling.
+.DS_Store
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+build/
+dist/
+*.egg-info/
+.coverage

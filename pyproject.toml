@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=59.6"]
+build-backend = "setuptools.build_meta"
+
+[tool.ruff.lint.per-file-ignores]
+# After the analyzer package split, typing.Iterator/Sequence import warnings multiply
+# with the module count (mechanical copies of the same pre-existing warning); per the
+# refactoring convention the code is moved verbatim, so suppress per file instead of
+# editing the code.
+"src/harbor_tasks/analyzer/*.py" = ["UP035"]
+# Same as above: packaging providers apt/pip copied pre-existing typing.Callable/Sequence
+# warnings across modules.
+"src/harbor_tasks/preparer/providers/*.py" = ["UP035"]
+# pip resolver in-container script (package_data resource, extracted verbatim): runs
+# inside a container in its own namespace; host-side lint does not apply.
+"src/harbor_tasks/preparer/providers/pip/resolver_script.py" = ["F401", "BLE001", "S112"]
